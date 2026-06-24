@@ -4,7 +4,7 @@ a (hopefully) working editor for Kinect Adventures (only Reflex Ride is supporte
 
 This editor is currently only in German and you can only edit objects not add or delete objects
 _____________________________________________________________________________________________________
-AdventureEdit Editor Todos:
+AdventureEdit Editor Todos: 
 -Add new objects
 -Set Timer 
 -Visual Tracks and Enviroment 
