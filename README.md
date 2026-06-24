@@ -22,12 +22,12 @@ ________________________________________________________________________________
 ______________________________________________________________________________________________________
 Guide
 1. Extract **all** of your Gamefiles (No Tutorial)<br/>
-2. Search in ./CookedXenon/ for something called ´"obs_whs_u_e01_gplay01.xxx"´ obs_whs stands for ´Obstacle Course´<br/>
+2. Search in ./CookedXenon/ for something called `"obs_whs_u_e01_gplay01.xxx"` obs_whs stands for `Obstacle Course`<br/>
 3. Decompress it with [decompress.exe from glidor](https://www.gildor.org/downloads)<br/>
 4. Load it into the editor<br/>
 5. Edit it<br/>
 6. put it in the folder you took it from<br/>
-7. load ´default.xex´ in xenia<br/>
+7. load `default.xex` in xenia<br/>
 8. YOURE DONE!<br/>
 ______________________________________________________________________________________________________
 I DO NOT ENCOURAGE PIRACY!!!!<br/>
