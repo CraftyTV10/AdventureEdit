@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AdventureEdit</title>
+
+<style>
+:root{
+    --bg:#0b0b0f;
+    --panel:#14141d;
+    --accent:#2ecc71;
+    --text:#ecf0f1;
+    --muted:#8e9ba8;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Segoe UI, Arial, sans-serif;
+    background:linear-gradient(135deg,#09090d,#12131b);
+    color:var(--text);
+    min-height:100vh;
+    padding:30px;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+}
+
+.hero{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.hero h1{
+    color:var(--accent);
+    font-size:4rem;
+    margin-bottom:10px;
+}
+
+.hero p{
+    color:var(--muted);
+    font-size:1.2rem;
+}
+
+.badge{
+    display:inline-block;
+    margin-top:15px;
+    padding:8px 18px;
+    border-radius:999px;
+    background:rgba(46,204,113,0.15);
+    border:1px solid rgba(46,204,113,0.4);
+    color:var(--accent);
+    font-weight:bold;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:25px;
+}
+
+@media(max-width:850px){
+    .grid{
+        grid-template-columns:1fr;
+    }
+}
+
+.card{
+    background:var(--panel);
+    border:1px solid #222230;
+    border-radius:15px;
+    padding:25px;
+    transition:0.2s;
+}
+
+.card:hover{
+    border-color:var(--accent);
+    transform:translateY(-3px);
+}
+
+.card h2{
+    color:var(--accent);
+    margin-bottom:15px;
+}
+
+.card ul,
+.card ol{
+    padding-left:20px;
+    line-height:1.8;
+}
+
+.card li{
+    margin-bottom:8px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.stat{
+    background:var(--panel);
+    border:1px solid #222230;
+    border-radius:15px;
+    text-align:center;
+    padding:20px;
+}
+
+.stat h3{
+    color:var(--accent);
+    margin-bottom:5px;
+}
+
+.btn{
+    display:block;
+    text-align:center;
+    background:var(--accent);
+    color:black;
+    text-decoration:none;
+    padding:14px;
+    border-radius:10px;
+    font-weight:bold;
+    transition:0.2s;
+}
+
+.btn:hover{
+    transform:scale(1.03);
+}
+
+.code{
+    margin-top:15px;
+    background:#080808;
+    border-radius:8px;
+    padding:15px;
+    font-family:Consolas, monospace;
+    color:var(--accent);
+}
+
+.footer{
+    text-align:center;
+    margin-top:40px;
+    color:var(--muted);
+    font-size:0.9rem;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="hero">
+        <h1>AdventureEdit</h1>
+        <p>Level Editor für Kinect Adventures (Xbox 360)</p>
+        <div class="badge">Alpha Version</div>
+    </div>
+
+    <div class="stats">
+        <div class="stat">
+            <h3>Windows</h3>
+            <p>Executable</p>
+        </div>
+
+        <div class="stat">
+            <h3>Xbox 360</h3>
+            <p>Level Editing</p>
+        </div>
+
+        <div class="stat">
+            <h3>Python</h3>
+            <p>Backend</p>
+        </div>
+    </div>
+
+    <div class="grid">
+
+        <div>
+
+            <div class="card">
+                <h2>Features</h2>
+
+                <ul>
+                    <li>Öffnen von Kinect Adventures Level-Dateien.</li>
+                    <li>Anzeige aller gefundenen Objekte.</li>
+                    <li>Objekte werden nach Gruppen kategorisiert:
+                        <ul>
+                            <li>Track</li>
+                            <li>Obstacle</li>
+                            <li>Timer / Logic</li>
+                        </ul>
+                    </li>
+                    <li>Anzeige des internen Namens jedes Objekts.</li>
+                    <li>Bearbeiten von Objektkoordinaten.</li>
+                    <li>Speichern der Änderungen zurück in die Level-Datei.</li>
+                </ul>
+            </div>
+
+            <br>
+
+            <div class="card">
+                <h2>Schnellstart</h2>
+
+                <ol>
+                    <li>Die Kinect Adventures ISO extrahieren.</li>
+                    <li>Die gewünschte Level-Datei entpacken.</li>
+                    <li>AdventureEdit.exe starten.</li>
+                    <li>Die Level-Datei öffnen.</li>
+                    <li>Objekte bearbeiten und speichern.</li>
+                </ol>
+            </div>
+
+            <br>
+
+            <div class="card">
+                <h2>Projektstatus</h2>
+
+                <ul>
+                    <li>✅ Level-Dateien öffnen</li>
+                    <li>✅ Objekte anzeigen</li>
+                    <li>✅ Gruppen anzeigen</li>
+                    <li>✅ Koordinaten bearbeiten</li>
+                    <li>❌ 3D-Ansicht</li>
+                    <li>❌ Texturen</li>
+                    <li>❌ Objektplatzierung</li>
+                    <li>❌ Objektlöschung</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div>
+
+            <div class="card">
+                <h2>Download</h2>
+
+                <a class="btn"
+                   href="https://github.com/CraftyTV10/AdventureEdit"
+                   target="_blank">
+                    GitHub Repository
+                </a>
+
+                <div class="code">
+AdventureEdit.exe
+                </div>
+
+                <p style="margin-top:15px;color:var(--muted);">
+                    Keine Installation erforderlich.<br>
+                    Einfach die EXE starten.
+                </p>
+            </div>
+
+            <br>
+
+            <div class="card">
+                <h2>Unterstützte Daten</h2>
+
+                <ul>
+                    <li>Objektnamen</li>
+                    <li>Gruppen</li>
+                    <li>Koordinaten</li>
+                    <li>Track-Daten</li>
+                    <li>Obstacle-Daten</li>
+                    <li>Timer/Logic-Daten</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        AdventureEdit ist ein inoffizielles Fanprojekt und steht in keiner Verbindung zu Microsoft oder Kinect Adventures.
+    </div>
+
+</div>
+
+</body>
+</html>
