@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="icon.png">
     <title>AdventureEdit - Roadmap</title>
     <style>
         :root { --bg: #0b0b0f; --panel: #13131c; --accent: #2ecc71; --text: #ecf0f1; }
@@ -10,8 +11,33 @@
         
         .hero { text-align: center; padding: 20px 0; }
         h1 { margin: 0; color: var(--accent); font-size: 2.2rem; }
-        .back-link { display: inline-block; margin-top: 10px; color: #7f8c8d; text-decoration: none; font-size: 0.9rem; }
-        .back-link:hover { color: var(--accent); }
+                .back-link { 
+            display: inline-flex; 
+            align-items: center;
+            margin-top: 15px; 
+            color: #7f8c8d; 
+            text-decoration: none; 
+            font-size: 0.9rem; 
+            background: #13131c;
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: 1px solid #1f1f2e;
+            transition: all 0.2s ease-in-out;
+        }
+        .back-link:hover { 
+            color: var(--accent); 
+            border-color: var(--accent);
+            background: #111116;
+        }
+        .back-link span {
+            transition: transform 0.2s ease;
+            display: inline-block;
+            margin-right: 6px;
+        }
+        .back-link:hover span {
+            transform: translateX(-4px);
+        }
+
         
         .container { max-width: 600px; margin: 20px auto; background: var(--panel); padding: 25px; border-radius: 8px; border: 1px solid #1f1f2e; }
         
@@ -43,10 +69,13 @@
 </head>
 <body>
 
-    <div class="hero">
+        <div class="hero">
         <h1>AdventureEdit Roadmap</h1>
-        <a href="https://craftytv10.github.io/AdventureEdit/" class="back-link">← Zurück zur Hauptseite</a>
+        <a href="https://craftytv10.github.io/AdventureEdit/" class="back-link">
+            <span>←</span> Zurück zur Hauptseite
+        </a>
     </div>
+
 
     <div class="container">
         <div class="progress-container">
