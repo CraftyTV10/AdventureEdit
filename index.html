@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
@@ -8,11 +8,12 @@
 
 <style>
 :root{
-    --bg:#0b0b0f;
-    --panel:#14141d;
+    --bg:#090b12;
+    --bg2:#121826;
+    --card:#151b29;
     --accent:#2ecc71;
     --text:#ecf0f1;
-    --muted:#8e9ba8;
+    --muted:#95a5a6;
 }
 
 *{
@@ -22,15 +23,17 @@
 }
 
 body{
-    font-family:Segoe UI, Arial, sans-serif;
-    background:linear-gradient(135deg,#09090d,#12131b);
+    font-family:Segoe UI,Arial,sans-serif;
+    background:
+        radial-gradient(circle at top left,#1c2640 0%,transparent 40%),
+        linear-gradient(135deg,var(--bg),var(--bg2));
     color:var(--text);
     min-height:100vh;
-    padding:30px;
+    padding:40px 20px;
 }
 
 .container{
-    max-width:1100px;
+    max-width:1200px;
     margin:auto;
 }
 
@@ -38,6 +41,21 @@ body{
     text-align:center;
     margin-bottom:40px;
 }
+
+.logo{
+    width:1000px;
+    max-width:95%;
+    height:auto;
+}
+
+.footer-icon{
+    width:350px;
+    max-width:95%;
+    height:auto;
+}
+
+
+
 
 .hero h1{
     color:var(--accent);
@@ -47,18 +65,45 @@ body{
 
 .hero p{
     color:var(--muted);
-    font-size:1.2rem;
+    font-size:1.3rem;
+    margin-bottom:20px;
 }
 
 .badge{
     display:inline-block;
-    margin-top:15px;
-    padding:8px 18px;
+    padding:10px 22px;
     border-radius:999px;
-    background:rgba(46,204,113,0.15);
-    border:1px solid rgba(46,204,113,0.4);
+    background:rgba(46,204,113,.15);
+    border:1px solid rgba(46,204,113,.5);
     color:var(--accent);
     font-weight:bold;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-bottom:30px;
+}
+
+.stat{
+    background:var(--card);
+    border:1px solid #20283c;
+    border-radius:15px;
+    padding:25px;
+    text-align:center;
+    transition:0.25s;
+}
+
+.stat:hover{
+    border-color:var(--accent);
+    transform:translateY(-4px);
+}
+
+.stat h2{
+    color:var(--accent);
+    margin-bottom:8px;
+    font-size:2rem;
 }
 
 .grid{
@@ -67,58 +112,38 @@ body{
     gap:25px;
 }
 
-@media(max-width:850px){
+@media(max-width:900px){
     .grid{
         grid-template-columns:1fr;
     }
 }
 
 .card{
-    background:var(--panel);
-    border:1px solid #222230;
+    background:var(--card);
+    border:1px solid #20283c;
     border-radius:15px;
     padding:25px;
-    transition:0.2s;
+    margin-bottom:25px;
+    transition:0.25s;
 }
 
 .card:hover{
     border-color:var(--accent);
-    transform:translateY(-3px);
 }
 
 .card h2{
     color:var(--accent);
-    margin-bottom:15px;
+    margin-bottom:20px;
 }
 
 .card ul,
 .card ol{
-    padding-left:20px;
-    line-height:1.8;
+    padding-left:25px;
+    line-height:1.9;
 }
 
 .card li{
-    margin-bottom:8px;
-}
-
-.stats{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-    margin-bottom:25px;
-}
-
-.stat{
-    background:var(--panel);
-    border:1px solid #222230;
-    border-radius:15px;
-    text-align:center;
-    padding:20px;
-}
-
-.stat h3{
-    color:var(--accent);
-    margin-bottom:5px;
+    margin-bottom:10px;
 }
 
 .btn{
@@ -127,9 +152,9 @@ body{
     background:var(--accent);
     color:black;
     text-decoration:none;
-    padding:14px;
-    border-radius:10px;
     font-weight:bold;
+    padding:15px;
+    border-radius:10px;
     transition:0.2s;
 }
 
@@ -138,12 +163,20 @@ body{
 }
 
 .code{
-    margin-top:15px;
-    background:#080808;
-    border-radius:8px;
+    background:#0a0f18;
+    border:1px solid #20283c;
+    border-radius:10px;
     padding:15px;
-    font-family:Consolas, monospace;
+    margin-top:15px;
+    font-family:Consolas,monospace;
     color:var(--accent);
+}
+
+.screenshot{
+    width:100%;
+    border-radius:12px;
+    border:1px solid #20283c;
+    margin-top:15px;
 }
 
 .footer{
@@ -154,31 +187,44 @@ body{
 }
 </style>
 </head>
+
 <body>
 
 <div class="container">
 
     <div class="hero">
+
+        <!-- Ersetze logo.png mit deinem Dateinamen -->
+        <img src="editor.png" class="logo">
+
         <h1>AdventureEdit</h1>
         <p>Level Editor für Kinect Adventures (Xbox 360)</p>
-        <div class="badge">Alpha Version</div>
+
+        <div class="badge">
+            Alpha Version v1.2
+        </div>
+
     </div>
 
-    <div class="stats">
-        <div class="stat">
-            <h3>Windows</h3>
-            <p>Executable</p>
-        </div>
+    <div class="stat">
+        <h2 id="stars">...</h2>
+        <p>GitHub Stars</p>
+    </div>
+
+    <script>
+    fetch("https://api.github.com/repos/CraftyTV10/AdventureEdit")
+    .then(r => r.json())
+    .then(data => {
+        document.getElementById("stars").innerText =
+            data.stargazers_count;
+    });
+    </script>
 
         <div class="stat">
-            <h3>Xbox 360</h3>
-            <p>Level Editing</p>
+            <h2>Xbox 360</h2>
+            <p>Kinect Adventures</p>
         </div>
 
-        <div class="stat">
-            <h3>Python</h3>
-            <p>Backend</p>
-        </div>
     </div>
 
     <div class="grid">
@@ -204,21 +250,17 @@ body{
                 </ul>
             </div>
 
-            <br>
-
             <div class="card">
                 <h2>Schnellstart</h2>
 
                 <ol>
-                    <li>Die Kinect Adventures ISO extrahieren.</li>
-                    <li>Die gewünschte Level-Datei entpacken.</li>
-                    <li>AdventureEdit.exe starten.</li>
-                    <li>Die Level-Datei öffnen.</li>
+                    <li>Kinect Adventures ISO extrahieren.</li>
+                    <li>Level-Datei mit Gildors decompress.exe entpacken.</li>
+                    <li>rredit.exe starten.</li>
+                    <li>Die gewünschte Level-Datei öffnen.</li>
                     <li>Objekte bearbeiten und speichern.</li>
                 </ol>
             </div>
-
-            <br>
 
             <div class="card">
                 <h2>Projektstatus</h2>
@@ -229,9 +271,9 @@ body{
                     <li>✅ Gruppen anzeigen</li>
                     <li>✅ Koordinaten bearbeiten</li>
                     <li>❌ 3D-Ansicht</li>
-                    <li>❌ Texturen</li>
                     <li>❌ Objektplatzierung</li>
                     <li>❌ Objektlöschung</li>
+                    <li>❌ Texturen</li>
                 </ul>
             </div>
 
@@ -243,22 +285,18 @@ body{
                 <h2>Download</h2>
 
                 <a class="btn"
-                   href="https://github.com/CraftyTV10/AdventureEdit"
+                   href="https://github.com/CraftyTV10/AdventureEdit/releases"
                    target="_blank">
-                    GitHub Repository
+                    Download AdventureEdit
                 </a>
 
                 <div class="code">
-AdventureEdit.exe
+rredit.exe
                 </div>
 
                 <p style="margin-top:15px;color:var(--muted);">
-                    Keine Installation erforderlich.<br>
-                    Einfach die EXE starten.
                 </p>
             </div>
-
-            <br>
 
             <div class="card">
                 <h2>Unterstützte Daten</h2>
@@ -273,12 +311,19 @@ AdventureEdit.exe
                 </ul>
             </div>
 
+
         </div>
 
     </div>
 
     <div class="footer">
-        AdventureEdit ist ein inoffizielles Fanprojekt und steht in keiner Verbindung zu Microsoft oder Kinect Adventures.
+        AdventureEdit ist ein inoffizielles Fanprojekt und steht in keiner Verbindung zu Microsoft oder Kinect Adventures.</li>
+        Ich übernehme keine Verantwortung für Schäden, die durch die Nutzung von AdventureEdit entstehen können.</li>
+        Ich unterstütze keine illegalen Aktivitäten, einschließlich der Verbreitung von urheberrechtlich geschütztem Material.</li>
+        <img src="icon.png" class="footer-icon" alt="AdventureEdit Icon"></li>
+        <div class="footer">
+            <p>© 2026 CraftyTV      </p>
+        </div>
     </div>
 
 </div>
