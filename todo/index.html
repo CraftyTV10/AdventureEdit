@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdventureEdit - Roadmap</title>
+    <style>
+        :root { --bg: #0b0b0f; --panel: #13131c; --accent: #2ecc71; --text: #ecf0f1; }
+        body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
+        
+        .hero { text-align: center; padding: 20px 0; }
+        h1 { margin: 0; color: var(--accent); font-size: 2.2rem; }
+        .back-link { display: inline-block; margin-top: 10px; color: #7f8c8d; text-decoration: none; font-size: 0.9rem; }
+        .back-link:hover { color: var(--accent); }
+        
+        .container { max-width: 600px; margin: 20px auto; background: var(--panel); padding: 25px; border-radius: 8px; border: 1px solid #1f1f2e; }
+        
+        /* Fortschrittsbalken */
+        .progress-container { margin-bottom: 25px; }
+        .progress-text { display: flex; justify-content: space-between; font-size: 0.9rem; color: #7f8c8d; margin-bottom: 5px; }
+        .progress-bar { background: #000; height: 8px; border-radius: 4px; overflow: hidden; }
+        .progress-fill { background: var(--accent); height: 100%; width: 0%; transition: width 0.4s ease; }
+        
+        /* To-Do Liste */
+        .todo-list { display: flex; flex-direction: column; gap: 12px; }
+        .todo-item { display: flex; align-items: center; gap: 12px; padding: 12px; background: #0b0b0f; border-radius: 6px; border: 1px solid #1f1f2e; user-select: none; }
+        
+        /* Checkbox-Styling */
+        .checkbox { width: 18px; height: 18px; border: 2px solid #7f8c8d; border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+        .todo-item.is-done .checkbox { border-color: var(--accent); background: var(--accent); }
+        .checkbox::after { content: "✓"; color: #000; font-weight: bold; font-size: 0.8rem; display: none; }
+        .todo-item.is-done .checkbox::after { display: block; }
+        
+        /* Text-Styling */
+        .todo-text { font-size: 1rem; flex-grow: 1; }
+        .todo-item.is-done .todo-text { text-decoration: line-through; color: #7f8c8d; }
+        
+        .badge { font-size: 0.75rem; padding: 3px 8px; border-radius: 4px; font-weight: bold; }
+        .badge.done { background: rgba(46, 204, 113, 0.1); color: var(--accent); }
+        .badge.working { background: rgba(52, 152, 219, 0.1); color: #3498db; }
+        .badge.todo { background: rgba(241, 196, 15, 0.1); color: #f1c40f; }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <h1>AdventureEdit Roadmap</h1>
+        <a href="index.html" class="back-link">← Zurück zur Hauptseite</a>
+    </div>
+
+    <div class="container">
+        <div class="progress-container">
+            <div class="progress-text">
+                <span>Projekt-Fortschritt</span>
+                <span id="progress-percent">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+        </div>
+
+        <!-- Die Liste wird jetzt komplett automatisch per JavaScript geladen -->
+        <div class="todo-list" id="todo-container"></div>
+    </div>
+
+    <script>
+        // --- HIER STEUERST DU DEINE AUFGABEN ---
+        // Mögliche Status-Werte: 
+        // "done"    -> Abgehakt & Grün
+        // "working" -> In Arbeit & Blau
+        // "todo"    -> Geplant & Gelb
+        const roadmapData = [
+            { text: "Reflex-Bergkamm (Reflex Ridge) Support", status: "done" },
+            { text: "Level-Timer Modifikator & Injektion", status: "working" },
+            { text: "Interaktive 3D-Level-Ansicht & Rendering", status: "working" },
+            { text: "Medaillen-Grenzwerte anpassen (Gold, Silber, Bronze)", status: "todo" },
+            { text: "Neue Objekte zur Schienen-Strecke hinzufügen/löschen", status: "todo" },
+            { text: "Support für weitere Minispiele (z.B. Flusssause)", status: "todo" }
+        ];
+
+        // --- AUTOMATISCHER RENDER-MECHANISMUS ---
+        const container = document.getElementById('todo-container');
+        let doneCount = 0;
+
+        roadmapData.forEach(task => {
+            const item = document.createElement('div');
+            item.className = 'todo-item';
+            
+            const checkbox = document.createElement('div');
+            checkbox.className = 'checkbox';
+            
+            const text = document.createElement('div');
+            text.className = 'todo-text';
+            text.innerText = task.text;
+            
+            const badge = document.createElement('span');
+            
+            // Status auswerten und UI anpassen
+            if (task.status === "done") {
+                item.classList.add('is-done');
+                badge.className = 'badge done';
+                badge.innerText = 'Fertig';
+                doneCount++;
+            } else if (task.status === "working") {
+                badge.className = 'badge working';
+                badge.innerText = 'In Arbeit';
+            } else {
+                badge.className = 'badge todo';
+                badge.innerText = 'Geplant';
+            }
+            
+            item.appendChild(checkbox);
+            item.appendChild(text);
+            item.appendChild(badge);
+            container.appendChild(item);
+        });
+
+        // Fortschritt berechnen
+        const total = roadmapData.length;
+        const percentage = total > 0 ? Math.round((doneCount / total) * 100) : 0;
+        
+        document.getElementById('progress-fill').style.width = percentage + '%';
+        document.getElementById('progress-percent').innerText = percentage + '%';
+    </script>
+</body>
+</html>
