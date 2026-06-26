@@ -2,7 +2,7 @@
 # KN!-Level Editor (AdventureEdit) <br/>
 
 a (hopefully) working editor for Kinect Adventures (only Reflex Ride is supported currently)<br/>
-[Website](https://craftytv10.github.io/AdventureEdit/)
+[Website](https://craftytv10.github.io/AdventureEdit/)<br/>
 This editor is currently only in German and you can only edit objects not add or delete objects<br/>
 _____________________________________________________________________________________________________
 AdventureEdit Editor Todos: <br/>
